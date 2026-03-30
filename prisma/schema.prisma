@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Country {
+  id           Int     @id @default(autoincrement())
+  name         String
+  slug         String  @unique
+  coverImage   String?
+  cities       City[]
+}
+
+model City {
+  id         Int     @id @default(autoincrement())
+  name       String
+  slug       String
+  countryId  Int
+  country    Country @relation(fields: [countryId], references: [id])
+
+  collections Collection[]
+
+  @@unique([slug, countryId])
+}
+
+model Collection {
+  id          Int     @id @default(autoincrement())
+  name        String
+  slug        String
+  description String?
+  coverImage  String?
+  cityId      Int
+  city        City    @relation(fields: [cityId], references: [id])
+
+  photos      Photo[]
+
+  @@unique([slug, cityId])
+}
+
+model Photo {
+  id           Int    @id @default(autoincrement())
+  imageUrl     String
+  publicId     String
+  category     String
+  caption      String?
+  collectionId Int
+  collection   Collection @relation(fields: [collectionId], references: [id])
+
+  createdAt    DateTime @default(now())
+}
