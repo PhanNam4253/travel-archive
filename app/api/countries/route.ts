@@ -1,6 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
+export async function GET(req: NextRequest) {
+  try {
+    const countries = await prisma.country.findMany({
+      include: {
+        cities: true,
+      },
+      orderBy: {
+        name: "asc",
+      },
+    });
+
+    return NextResponse.json(countries);
+  } catch (error) {
+    console.error("Error fetching countries:", error);
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Failed to fetch countries" },
+      { status: 500 }
+    );
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();

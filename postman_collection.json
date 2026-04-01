@@ -1,0 +1,242 @@
+{
+  "info": {
+    "_postman_id": "travel-archive-api",
+    "name": "Travel Archive API",
+    "description": "Test collection for Travel Archive API endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Countries",
+      "item": [
+        {
+          "name": "Get All Countries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/countries",
+              "host": ["{{base_url}}"],
+              "path": ["api", "countries"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Country - France",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"France\",\n  \"slug\": \"france\",\n  \"coverImage\": \"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/countries",
+              "host": ["{{base_url}}"],
+              "path": ["api", "countries"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Country - Japan",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Japan\",\n  \"slug\": \"japan\",\n  \"coverImage\": \"https://images.unsplash.com/photo-1540959375944-7049f642e9a0?w=800\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/countries",
+              "host": ["{{base_url}}"],
+              "path": ["api", "countries"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cities",
+      "item": [
+        {
+          "name": "Get All Cities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/cities",
+              "host": ["{{base_url}}"],
+              "path": ["api", "cities"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Cities by Country (countryId=1)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/cities?countryId=1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "cities"],
+              "query": [
+                {
+                  "key": "countryId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create City - Paris (Requires France country ID)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Paris\",\n  \"slug\": \"paris\",\n  \"countryId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/cities",
+              "host": ["{{base_url}}"],
+              "path": ["api", "cities"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create City - Tokyo (Requires Japan country ID)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Tokyo\",\n  \"slug\": \"tokyo\",\n  \"countryId\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/cities",
+              "host": ["{{base_url}}"],
+              "path": ["api", "cities"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Collections",
+      "item": [
+        {
+          "name": "Get All Collections",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/collections",
+              "host": ["{{base_url}}"],
+              "path": ["api", "collections"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Collections by City (cityId=1)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/collections?cityId=1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "collections"],
+              "query": [
+                {
+                  "key": "cityId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Collection - Eiffel Tower (Requires Paris city ID)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Eiffel Tower\",\n  \"slug\": \"eiffel-tower\",\n  \"description\": \"Beautiful monuments and views of the Eiffel Tower\",\n  \"coverImage\": \"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800\",\n  \"cityId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/collections",
+              "host": ["{{base_url}}"],
+              "path": ["api", "collections"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Collection - Tokyo Tower (Requires Tokyo city ID)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Tokyo Tower\",\n  \"slug\": \"tokyo-tower\",\n  \"description\": \"Nighttime views and cultural landmarks\",\n  \"coverImage\": \"https://images.unsplash.com/photo-1540959375944-7049f642e9a0?w=800\",\n  \"cityId\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/collections",
+              "host": ["{{base_url}}"],
+              "path": ["api", "collections"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}
+
