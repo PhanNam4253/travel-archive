@@ -229,6 +229,131 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "Photos",
+      "item": [
+        {
+          "name": "Get All Photos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/photos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "photos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Photos by Collection (collectionId=1)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/photos?collectionId=1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "photos"],
+              "query": [
+                {
+                  "key": "collectionId",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Photo - Eiffel Tower Night",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"imageUrl\": \"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200\",\n  \"publicId\": \"eiffel-tower-night-001\",\n  \"category\": \"landmark\",\n  \"caption\": \"Eiffel Tower illuminated at night\",\n  \"collectionId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/photos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "photos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Multiple Photos (Bulk Upload)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200\",\n    \"publicId\": \"eiffel-tower-night-001\",\n    \"category\": \"landmark\",\n    \"caption\": \"Eiffel Tower illuminated at night\",\n    \"collectionId\": 1\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1524450a542-be00c27e9544?w=1200\",\n    \"publicId\": \"eiffel-tower-day-001\",\n    \"category\": \"landmark\",\n    \"caption\": \"Eiffel Tower during daytime\",\n    \"collectionId\": 1\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200\",\n    \"publicId\": \"eiffel-tower-sunset-001\",\n    \"category\": \"landmark\",\n    \"caption\": \"Eiffel Tower at sunset\",\n    \"collectionId\": 1\n  }\n]"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/photos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "photos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Photo - Eiffel Tower Day",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"imageUrl\": \"https://images.unsplash.com/photo-1524450a542-be00c27e9544?w=1200\",\n  \"publicId\": \"eiffel-tower-day-001\",\n  \"category\": \"landmark\",\n  \"caption\": \"Eiffel Tower during daytime\",\n  \"collectionId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/photos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "photos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Photo - Tokyo Tower",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"imageUrl\": \"https://images.unsplash.com/photo-1540959375944-7049f642e9a0?w=1200\",\n  \"publicId\": \"tokyo-tower-001\",\n  \"category\": \"landmark\",\n  \"caption\": \"Tokyo Tower at dusk\",\n  \"collectionId\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/photos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "photos"]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "variable": [
