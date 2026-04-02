@@ -34,9 +34,17 @@ export async function getCollections(citySlug: string) {
   });
 }
 
-export async function getPhotos(collectionId: number) {
+export async function getPhotos(collectionSlug: string) {
+  const collection = await prisma.collection.findFirst({
+    where: {
+      slug: collectionSlug,
+    },
+  });
+  if (!collection) return [];
   return prisma.photo.findMany({
-    where: { collectionId },
+    where: {
+      collectionId: collection.id,
+    },
     orderBy: {
       createdAt: "desc",
     },
