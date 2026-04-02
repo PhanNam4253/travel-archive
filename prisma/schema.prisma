@@ -20,6 +20,7 @@ model City {
   name       String
   slug       String
   countryId  Int
+  coverImage   String?
   country    Country @relation(fields: [countryId], references: [id])
 
   collections Collection[]

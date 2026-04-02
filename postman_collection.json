@@ -45,6 +45,28 @@
           "response": []
         },
         {
+          "name": "Create Country - Vietnam",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Vietnam\",\n  \"slug\": \"vietnam\",\n  \"coverImage\": \"https://images.unsplash.com/photo-1528127269322-539801943592?w=800\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/countries",
+              "host": ["{{base_url}}"],
+              "path": ["api", "countries"]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Create Country - Japan",
           "request": {
             "method": "POST",
@@ -115,7 +137,51 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"Paris\",\n  \"slug\": \"paris\",\n  \"countryId\": 1\n}"
+              "raw": "{\n  \"name\": \"Paris\",\n  \"slug\": \"paris\",\n  \"countryId\": 1, \n \"coverImage\": \"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800\" \n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/cities",
+              "host": ["{{base_url}}"],
+              "path": ["api", "cities"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create City - Ho Chi Minh City (Requires Vietnam country ID)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ho Chi Minh City\",\n  \"slug\": \"ho-chi-minh-city\",\n  \"countryId\": 2,\n  \"coverImage\": \"https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/cities",
+              "host": ["{{base_url}}"],
+              "path": ["api", "cities"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create City - Hanoi (Requires Vietnam country ID)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Hanoi\",\n  \"slug\": \"hanoi\",\n  \"countryId\": 2,\n  \"coverImage\": \"https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800\"\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/cities",
@@ -227,6 +293,50 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Create Collection - Ben Thanh Market (Requires Ho Chi Minh City ID)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ben Thanh Market\",\n  \"slug\": \"ben-thanh-market\",\n  \"description\": \"Iconic market with local food, shopping, and vibrant street life\",\n  \"coverImage\": \"https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800\",\n  \"cityId\": 3\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/collections",
+              "host": ["{{base_url}}"],
+              "path": ["api", "collections"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Collection - Hoan Kiem Lake (Requires Hanoi city ID)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Hoan Kiem Lake\",\n  \"slug\": \"hoan-kiem-lake\",\n  \"description\": \"Historic lake with scenic views and cultural significance in the heart of Hanoi\",\n  \"coverImage\": \"https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800\",\n  \"cityId\": 4\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/collections",
+              "host": ["{{base_url}}"],
+              "path": ["api", "collections"]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -278,6 +388,40 @@
             "body": {
               "mode": "raw",
               "raw": "{\n  \"imageUrl\": \"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200\",\n  \"publicId\": \"eiffel-tower-night-001\",\n  \"category\": \"landmark\",\n  \"caption\": \"Eiffel Tower illuminated at night\",\n  \"collectionId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/photos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "photos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Photos - Ben Thanh Market (10 items)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1200\",\n    \"publicId\": \"ben-thanh-001\",\n    \"category\": \"market\",\n    \"caption\": \"Ben Thanh Market exterior view\",\n    \"collectionId\": 8\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1604908176997-4310b1e0c8d3?w=1200\",\n    \"publicId\": \"ben-thanh-002\",\n    \"category\": \"food\",\n    \"caption\": \"Street food inside the market\",\n    \"collectionId\": 8\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1597149839817-d8b5f0c7c5d2?w=1200\",\n    \"publicId\": \"ben-thanh-003\",\n    \"category\": \"shopping\",\n    \"caption\": \"Souvenir stalls and local goods\",\n    \"collectionId\": 8\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1569288063648-5caa2d6c5b59?w=1200\",\n    \"publicId\": \"ben-thanh-004\",\n    \"category\": \"market\",\n    \"caption\": \"Busy crowd inside the market\",\n    \"collectionId\": 8\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1576485290814-1c72aa4bbb8e?w=1200\",\n    \"publicId\": \"ben-thanh-005\",\n    \"category\": \"food\",\n    \"caption\": \"Vietnamese dishes at food stalls\",\n    \"collectionId\": 8\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1587135991058-8816d4b0f2cb?w=1200\",\n    \"publicId\": \"ben-thanh-006\",\n    \"category\": \"night\",\n    \"caption\": \"Ben Thanh Market at night\",\n    \"collectionId\": 8\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1606820854416-439b3305ff39?w=1200\",\n    \"publicId\": \"ben-thanh-007\",\n    \"category\": \"shopping\",\n    \"caption\": \"Colorful fabrics and clothing\",\n    \"collectionId\": 8\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1590845947670-c009801ffa74?w=1200\",\n    \"publicId\": \"ben-thanh-008\",\n    \"category\": \"market\",\n    \"caption\": \"Local vendors selling goods\",\n    \"collectionId\": 8\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=1200\",\n    \"publicId\": \"ben-thanh-009\",\n    \"category\": \"food\",\n    \"caption\": \"Fresh ingredients and produce\",\n    \"collectionId\": 8\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1585506942812-e72b29cef752?w=1200\",\n    \"publicId\": \"ben-thanh-010\",\n    \"category\": \"night\",\n    \"caption\": \"Night market atmosphere\",\n    \"collectionId\": 8\n  }\n]"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/photos",
+              "host": ["{{base_url}}"],
+              "path": ["api", "photos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Photos - Hoan Kiem Lake (10 items)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1200\",\n    \"publicId\": \"hoan-kiem-001\",\n    \"category\": \"landmark\",\n    \"caption\": \"Hoan Kiem Lake overview\",\n    \"collectionId\": 7\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1577948000111-9c970dfe3743?w=1200\",\n    \"publicId\": \"hoan-kiem-002\",\n    \"category\": \"temple\",\n    \"caption\": \"Ngoc Son Temple on the lake\",\n    \"collectionId\": 7\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1583417267826-aebc4d1542e1?w=1200\",\n    \"publicId\": \"hoan-kiem-003\",\n    \"category\": \"bridge\",\n    \"caption\": \"The Huc Bridge in red\",\n    \"collectionId\": 7\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1604868189265-219ba7bf7ea3?w=1200\",\n    \"publicId\": \"hoan-kiem-004\",\n    \"category\": \"nature\",\n    \"caption\": \"Peaceful lake scenery\",\n    \"collectionId\": 7\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1580554530778-ca36943938b2?w=1200\",\n    \"publicId\": \"hoan-kiem-005\",\n    \"category\": \"city\",\n    \"caption\": \"City life around the lake\",\n    \"collectionId\": 7\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1593974738776-6f0d03a9e2b6?w=1200\",\n    \"publicId\": \"hoan-kiem-006\",\n    \"category\": \"sunrise\",\n    \"caption\": \"Morning at Hoan Kiem Lake\",\n    \"collectionId\": 7\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1619441207979-6a4c3e7f4c8b?w=1200\",\n    \"publicId\": \"hoan-kiem-007\",\n    \"category\": \"people\",\n    \"caption\": \"Locals exercising by the lake\",\n    \"collectionId\": 7\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1620553965003-c3c6c0f33bd5?w=1200\",\n    \"publicId\": \"hoan-kiem-008\",\n    \"category\": \"night\",\n    \"caption\": \"Lake at night with lights\",\n    \"collectionId\": 7\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1605582345016-7f7c4f5d7f43?w=1200\",\n    \"publicId\": \"hoan-kiem-009\",\n    \"category\": \"landmark\",\n    \"caption\": \"Turtle Tower in the lake\",\n    \"collectionId\": 7\n  },\n  {\n    \"imageUrl\": \"https://images.unsplash.com/photo-1619969424852-8b3d299c4c45?w=1200\",\n    \"publicId\": \"hoan-kiem-010\",\n    \"category\": \"nature\",\n    \"caption\": \"Green surroundings of the lake\",\n    \"collectionId\": 7\n  }\n]"
             },
             "url": {
               "raw": "{{base_url}}/api/photos",
@@ -364,4 +508,3 @@
     }
   ]
 }
-

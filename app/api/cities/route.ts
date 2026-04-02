@@ -21,8 +21,11 @@ export async function GET(req: NextRequest) {
   } catch (error) {
     console.error("Error fetching cities:", error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Failed to fetch cities" },
-      { status: 500 }
+      {
+        error:
+          error instanceof Error ? error.message : "Failed to fetch cities",
+      },
+      { status: 500 },
     );
   }
 }
@@ -30,12 +33,12 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, slug, countryId } = body;
+    const { name, slug, countryId, coverImage } = body;
 
     if (!name || !slug || !countryId) {
       return NextResponse.json(
         { error: "Missing name, slug, or countryId" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -44,6 +47,7 @@ export async function POST(req: NextRequest) {
         name,
         slug,
         countryId,
+        coverImage,
       },
     });
 
@@ -51,8 +55,10 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Error creating city:", error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Failed to create city" },
-      { status: 500 }
+      {
+        error: error instanceof Error ? error.message : "Failed to create city",
+      },
+      { status: 500 },
     );
   }
 }
